@@ -1,0 +1,16 @@
+<h1>SportZone - Ofertes</h1>
+
+<div *ngIf="loading">
+  <p>Carregant ofertes...</p>
+</div>
+
+<div *ngIf="!loading">
+  <p>Nombre de productes: {{ products.length }}</p>
+
+  <div *ngFor="let product of products">
+    <p>{{ product.name }}</p>
+    <p>{{ product.offerPrice }} €</p>
+    <p>{{ product.discountPercent }}%</p>
+    <hr>
+  </div>
+</div>
