@@ -1,0 +1,54 @@
+<h1 class="page-title">SportZone - Cistella</h1>
+
+<div *ngIf="items.length === 0" class="empty-cart">
+  <mat-card>
+    <mat-card-content>
+      <h2>La cistella és buida</h2>
+      <p>Encara no has afegit cap producte.</p>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <a mat-raised-button routerLink="/">Veure ofertes</a>
+      <a mat-raised-button routerLink="/categories">Veure categories</a>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<div *ngIf="items.length > 0" class="cart-layout">
+  <div class="cart-items">
+    <mat-card class="cart-item-card" *ngFor="let item of items">
+      <div class="cart-item-content">
+        <div class="cart-item-image">
+          <img [src]="item.image" [alt]="item.name" />
+        </div>
+
+        <div class="cart-item-info">
+          <h3>{{ item.name }}</h3>
+          <p>Preu unitari: {{ item.price }} €</p>
+          <p>Quantitat: {{ item.quantity }}</p>
+          <p class="subtotal">Subtotal: {{ item.price * item.quantity }} €</p>
+
+          <div class="actions">
+            <button mat-raised-button (click)="increase(item)">+</button>
+            <button mat-raised-button (click)="decrease(item)">-</button>
+            <button mat-raised-button (click)="remove(item)">Eliminar</button>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+
+  <div class="cart-summary">
+    <mat-card>
+      <mat-card-content>
+        <h2>Resum de la cistella</h2>
+        <p>Total de productes: {{ getTotalItems() }}</p>
+        <p class="total-price">Total: {{ getTotalPrice() }} €</p>
+      </mat-card-content>
+
+      <mat-card-actions class="summary-actions">
+        <button mat-raised-button (click)="clearCart()">Buidar cistella</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

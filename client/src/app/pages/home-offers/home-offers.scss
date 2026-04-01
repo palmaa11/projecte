@@ -1,0 +1,61 @@
+.page-title {
+  margin: 24px;
+}
+
+.products-count {
+  margin: 0 24px 16px 24px;
+}
+
+.state-box {
+  margin: 24px;
+}
+
+.error {
+  color: #b00020;
+}
+
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 0 24px 24px 24px;
+}
+
+.offer-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.offer-card img {
+  height: 220px;
+  object-fit: cover;
+}
+
+.offer-card h2 {
+  margin-top: 8px;
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+
+.price {
+  margin: 6px 0;
+}
+
+.offer-price {
+  font-weight: 700;
+}
+
+.catalog-price {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.discount {
+  font-weight: 600;
+}
+
+mat-card-actions {
+  margin-top: auto;
+  padding: 16px;
+}

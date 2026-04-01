@@ -38,4 +38,92 @@ export class GraphqlService {
 
     return result.data;
   }
+
+  async getTopCategories() {
+    const result = await this.apollo.query({
+      fetchPolicy: 'network-only',
+      query: gql`
+        query {
+          topCategories {
+            id
+            name
+            level
+          }
+        }
+      `
+    });
+
+    return result.data;
+  }
+
+  async getSubcategories(parentId: string) {
+    const result = await this.apollo.query({
+      fetchPolicy: 'network-only',
+      query: gql`
+        query($parentId: ID!) {
+          subcategories(parentId: $parentId) {
+            id
+            name
+            level
+          }
+        }
+      `,
+      variables: {
+        parentId
+      }
+    });
+
+    return result.data;
+  }
+
+  async getProductsByCategory(categoryId: string) {
+    const result = await this.apollo.query({
+      fetchPolicy: 'network-only',
+      query: gql`
+        query($categoryId: ID!) {
+          productsByCategory(categoryId: $categoryId) {
+            id
+            code
+            name
+            shortDescription
+            image
+            catalogPrice
+          }
+        }
+      `,
+      variables: {
+        categoryId
+      }
+    });
+
+    return result.data;
+  }
+
+  async getProductDetail(id: string) {
+    const result = await this.apollo.query({
+      fetchPolicy: 'network-only',
+      query: gql`
+        query($id: ID!) {
+          productDetail(id: $id) {
+            id
+            code
+            name
+            shortDescription
+            longDescription
+            image
+            catalogPrice
+            offerPrice
+            discountPercent
+            offerEndDate
+            categoryId
+          }
+        }
+      `,
+      variables: {
+        id
+      }
+    });
+
+    return result.data;
+  }
 }

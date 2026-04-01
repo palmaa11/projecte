@@ -1,0 +1,26 @@
+.main-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0 16px;
+}
+
+.brand {
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.page-content {
+  padding-top: 8px;
+}
+
+a[mat-button] {
+  text-decoration: none;
+  font-weight: 500;
+}

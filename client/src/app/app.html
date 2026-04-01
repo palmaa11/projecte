@@ -1,1 +1,14 @@
-<router-outlet></router-outlet>
+<mat-toolbar class="main-toolbar">
+  <span class="brand" routerLink="/">SportZone</span>
+
+  <span class="spacer"></span>
+
+  <a mat-button routerLink="/">Ofertes</a>
+  <a mat-button routerLink="/categories">Categories</a>
+  <a mat-button routerLink="/search">Cerca</a>
+  <a mat-button routerLink="/cart">Cistella ({{ cartCount }})</a>
+</mat-toolbar>
+
+<main class="page-content">
+  <router-outlet></router-outlet>
+</main>

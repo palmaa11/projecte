@@ -1,0 +1,45 @@
+.page-title {
+  margin: 24px;
+}
+
+.state-box {
+  margin: 24px;
+}
+
+.error {
+  color: #b00020;
+}
+
+.categories-grid,
+.subcategories-grid,
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  padding: 0 24px 24px 24px;
+}
+
+.category-card,
+.subcategory-card,
+.product-card {
+  height: 100%;
+}
+
+.subcategories-section,
+.products-section {
+  margin-top: 8px;
+}
+
+.subcategories-section h2,
+.products-section h2 {
+  margin: 0 24px 16px 24px;
+}
+
+.product-card img {
+  height: 220px;
+  object-fit: cover;
+}
+
+.price {
+  font-weight: 700;
+}

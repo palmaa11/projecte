@@ -1,2 +1,48 @@
-<h1>SportZone - Fitxa de producte</h1>
-<p>Detall del producte</p>
+<h1 class="page-title">SportZone - Fitxa de producte</h1>
+
+<div *ngIf="loading" class="state-box">
+  <p>Carregant producte...</p>
+</div>
+
+<div *ngIf="error && !loading" class="state-box error">
+  <p>{{ error }}</p>
+  <a mat-button routerLink="/categories">Tornar a categories</a>
+</div>
+
+<div *ngIf="!loading && product" class="detail-container">
+  <mat-card class="detail-card">
+    <img
+      mat-card-image
+      [src]="product.image"
+      [alt]="product.name"
+    />
+
+    <mat-card-content>
+      <h2>{{ product.name }}</h2>
+
+      <p class="short-description">{{ product.shortDescription }}</p>
+      <p>{{ product.longDescription }}</p>
+
+      <p class="price catalog-price">
+        Preu de catàleg: {{ product.catalogPrice }} €
+      </p>
+
+      <p class="price offer-price" *ngIf="product.offerPrice !== null">
+        Preu oferta: {{ product.offerPrice }} €
+      </p>
+
+      <p class="discount" *ngIf="product.discountPercent !== null">
+        Descompte: {{ product.discountPercent }}%
+      </p>
+
+      <p class="offer-end" *ngIf="product.offerEndDate">
+        Fi oferta: {{ product.offerEndDate | date:'dd/MM/yyyy' }}
+      </p>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button (click)="addToCart()">Afegir a la cistella</button>
+      <a mat-raised-button routerLink="/categories">Tornar a categories</a>
+    </mat-card-actions>
+  </mat-card>
+</div>

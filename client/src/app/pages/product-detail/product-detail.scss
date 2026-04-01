@@ -1,0 +1,56 @@
+.page-title {
+  margin: 24px;
+}
+
+.state-box {
+  margin: 24px;
+}
+
+.error {
+  color: #b00020;
+}
+
+.detail-container {
+  padding: 0 24px 24px 24px;
+}
+
+.detail-card {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.detail-card img {
+  max-height: 420px;
+  object-fit: cover;
+}
+
+.detail-card h2 {
+  margin-top: 16px;
+  margin-bottom: 12px;
+  font-size: 28px;
+}
+
+.short-description {
+  font-weight: 600;
+}
+
+.price {
+  margin-top: 12px;
+}
+
+.catalog-price {
+  text-decoration: line-through;
+  opacity: 0.75;
+}
+
+.offer-price {
+  font-weight: 700;
+}
+
+.discount {
+  font-weight: 700;
+}
+
+.offer-end {
+  margin-top: 8px;
+}

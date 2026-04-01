@@ -1,16 +1,36 @@
-<h1>SportZone - Ofertes</h1>
+<h1 class="page-title">SportZone - Ofertes</h1>
 
-<div *ngIf="loading">
+<div *ngIf="loading" class="state-box">
   <p>Carregant ofertes...</p>
 </div>
 
-<div *ngIf="!loading">
-  <p>Nombre de productes: {{ products.length }}</p>
+<div *ngIf="error && !loading" class="state-box error">
+  <p>{{ error }}</p>
+</div>
 
-  <div *ngFor="let product of products">
-    <p>{{ product.name }}</p>
-    <p>{{ product.offerPrice }} €</p>
-    <p>{{ product.discountPercent }}%</p>
-    <hr>
+<div *ngIf="!loading && !error">
+  <p class="products-count">Nombre de productes: {{ products.length }}</p>
+
+  <div class="offers-grid">
+    <mat-card class="offer-card" *ngFor="let product of products">
+      <img
+        mat-card-image
+        [src]="product.image"
+        [alt]="product.name"
+      />
+
+      <mat-card-content>
+        <h2>{{ product.name }}</h2>
+
+        <p class="price offer-price">Preu oferta: {{ product.offerPrice }} €</p>
+        <p class="price catalog-price">Preu catàleg: {{ product.catalogPrice }} €</p>
+        <p class="discount">Descompte: {{ product.discountPercent }}%</p>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-raised-button (click)="addToCart(product)">Afegir a la cistella</button>
+        <button mat-raised-button>Veure producte</button>
+      </mat-card-actions>
+    </mat-card>
   </div>
 </div>

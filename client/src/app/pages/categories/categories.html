@@ -1,2 +1,86 @@
-<h1>SportZone - Categories</h1>
-<p>Llistat de categories</p>
+<h1 class="page-title">SportZone - Categories</h1>
+
+<div *ngIf="loading" class="state-box">
+  <p>Carregant categories...</p>
+</div>
+
+<div *ngIf="error && !loading" class="state-box error">
+  <p>{{ error }}</p>
+</div>
+
+<div *ngIf="!loading && !error">
+  <div class="categories-grid">
+    <mat-card class="category-card" *ngFor="let category of categories">
+      <mat-card-content>
+        <h2>{{ category.name }}</h2>
+        <p>Categoria principal</p>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-raised-button (click)="loadSubcategories(category)">
+          Veure subcategories
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div class="subcategories-section" *ngIf="selectedCategoryName">
+    <h2>Subcategories de {{ selectedCategoryName }}</h2>
+
+    <div *ngIf="loadingSubcategories">
+      <p class="state-box">Carregant subcategories...</p>
+    </div>
+
+    <div *ngIf="!loadingSubcategories && subcategories.length === 0">
+      <p class="state-box">No hi ha subcategories disponibles.</p>
+    </div>
+
+    <div class="subcategories-grid" *ngIf="!loadingSubcategories && subcategories.length > 0">
+      <mat-card class="subcategory-card" *ngFor="let subcategory of subcategories">
+        <mat-card-content>
+          <h3>{{ subcategory.name }}</h3>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button mat-raised-button (click)="loadProducts(subcategory)">
+            Veure productes
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="products-section" *ngIf="selectedSubcategoryName">
+    <h2>Productes de {{ selectedSubcategoryName }}</h2>
+
+    <div *ngIf="loadingProducts">
+      <p class="state-box">Carregant productes...</p>
+    </div>
+
+    <div *ngIf="!loadingProducts && products.length === 0">
+      <p class="state-box">No hi ha productes en aquesta subcategoria.</p>
+    </div>
+
+    <div class="products-grid" *ngIf="!loadingProducts && products.length > 0">
+      <mat-card class="product-card" *ngFor="let product of products">
+        <img
+          mat-card-image
+          [src]="product.image"
+          [alt]="product.name"
+        />
+
+        <mat-card-content>
+          <h3>{{ product.name }}</h3>
+          <p>{{ product.shortDescription }}</p>
+          <p class="price">{{ product.catalogPrice }} €</p>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button mat-raised-button [routerLink]="['/product', product.id]">
+  Veure fitxa
+</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
